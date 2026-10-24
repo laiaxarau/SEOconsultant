@@ -1,33 +1,46 @@
 ---
-// Logos are monochrome by default and take the brand colour on hover.
-// TODO: replace `mark` (initials) with the official SVG logos.
+import { Image } from 'astro:assets';
+import searchConsole from '../assets/tools/search-console.svg';
+import ga4 from '../assets/tools/ga4.svg';
+import dataStudio from '../assets/tools/data-studio.svg';
+import screamingFrog from '../assets/tools/screaming-frog.png';
+import pagespeed from '../assets/tools/pagespeed.svg';
+import schemaOrg from '../assets/tools/schema-org.webp';
+import devtools from '../assets/tools/devtools.png';
+import semrush from '../assets/tools/semrush.svg';
+import ahrefs from '../assets/tools/ahrefs.svg';
+import seRanking from '../assets/tools/se-ranking.png';
+
+// Logos are greyscale by default and show their original colours on hover.
+// Tools without a logo yet fall back to `mark` (initials) in the brand colour.
 const groups = [
   {
     label: '01 / Search & analytics',
     title: 'Understanding search performance',
     tools: [
-      { name: 'Search Console', mark: 'GSC', brand: '#4285F4' },
-      { name: 'GA4', mark: 'GA4', brand: '#E37400' },
-      { name: 'Looker Studio', mark: 'LS', brand: '#4285F4' },
-      { name: 'GTM', mark: 'GTM', brand: '#246FDB' },
+      { name: 'Search Console', logo: searchConsole },
+      { name: 'GA4', logo: ga4 },
+      { name: 'Looker Studio', logo: dataStudio },
+      { name: 'GTM', mark: 'GTM', brand: '#246FDB' }, // TODO: GTM logo
     ],
   },
   {
     label: '02 / Technical SEO',
     title: 'Looking under the hood',
     tools: [
-      { name: 'Screaming Frog', mark: 'SF', brand: '#5E9E2E' },
-      { name: 'PageSpeed', mark: 'PSI', brand: '#4285F4' },
-      { name: 'Schema.org', mark: '{ }', brand: '#E2583E' },
-      { name: 'DevTools', mark: 'DT', brand: '#1A73E8' },
+      { name: 'Screaming Frog', logo: screamingFrog },
+      { name: 'PageSpeed', logo: pagespeed },
+      { name: 'Schema.org', logo: schemaOrg },
+      { name: 'DevTools', logo: devtools },
     ],
   },
   {
     label: '03 / SEO research & strategy',
     title: 'Finding opportunities',
     tools: [
-      { name: 'Semrush', mark: 'SR', brand: '#FF642D' },
-      { name: 'Ahrefs', mark: 'ah', brand: '#054ADA' },
+      { name: 'Semrush', logo: semrush },
+      { name: 'Ahrefs', logo: ahrefs },
+      { name: 'SE Ranking', logo: seRanking },
     ],
   },
 ];
@@ -54,9 +67,13 @@ const groups = [
             </div>
             <ul class="tools">
               {group.tools.map((tool) => (
-                <li class="tool" style={`--brand: ${tool.brand}`}>
-                  <span class="tool__icon" aria-hidden="true">
-                    {tool.mark}
+                <li class="tool" style={tool.brand ? `--brand: ${tool.brand}` : undefined}>
+                  <span class:list={['tool__icon', { 'tool__icon--mark': !tool.logo }]} aria-hidden="true">
+                    {tool.logo ? (
+                      <Image src={tool.logo} alt="" width={96} class="tool__logo" />
+                    ) : (
+                      tool.mark
+                    )}
                   </span>
                   <span class="tool__name">{tool.name}</span>
                 </li>
@@ -143,8 +160,23 @@ const groups = [
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1.5px solid currentColor;
+    border: 1px solid var(--stone);
     border-radius: 16px;
+    background: #FFFFFF;
+    transition: transform 0.2s ease;
+  }
+
+  .tool__logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.75;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+  }
+
+  .tool__icon--mark {
+    border: 1.5px solid currentColor;
     background: var(--ivory);
     font-size: 13px;
     font-weight: 600;
@@ -161,6 +193,14 @@ const groups = [
 
   .tool:hover .tool__icon {
     transform: translateY(-3px);
+  }
+
+  .tool:hover .tool__logo {
+    filter: none;
+    opacity: 1;
+  }
+
+  .tool:hover .tool__icon--mark {
     color: var(--brand);
   }
 
