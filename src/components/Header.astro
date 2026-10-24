@@ -1,0 +1,71 @@
+---
+const links = [
+  { href: '#about', label: 'About' },
+  { href: '#toolkit', label: 'Toolkit' },
+  { href: '#approach', label: 'Approach' },
+  { href: '#work', label: 'Work' },
+];
+---
+
+<header class="header">
+  <div class="wrap header__inner">
+    <a href="#top" class="brand">
+      <span class="brand__name">LAIA XARAU</span>
+      <span class="brand__tag">SEO · TECHNOLOGY · STRATEGY</span>
+    </a>
+    <nav aria-label="Main" class="nav">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+    <a href="#contact" class="btn btn--primary btn--small">Get in touch</a>
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 72px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .brand__name {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+  }
+
+  .brand__tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--text-subtle);
+  }
+
+  .nav {
+    display: flex;
+    gap: 28px;
+    font-size: 15px;
+  }
+
+  .nav a {
+    text-decoration: none;
+  }
+
+  @media (max-width: 720px) {
+    .nav,
+    .brand__tag {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,81 @@
+---
+import { SITE } from '../data/site';
+---
+
+<section id="contact" class="contact" aria-labelledby="contact-title">
+  <div class="wrap contact__inner">
+    <p class="eyebrow contact__eyebrow">07 / Contact</p>
+    <h2 id="contact-title" class="contact__title">Let's <span class="contact__accent">talk.</span></h2>
+    <p class="contact__text">
+      Interested in SEO, technical challenges or a digital project that needs a thoughtful
+      approach? I'm always open to meaningful conversations and interesting collaborations.
+    </p>
+    <div class="btn-row">
+      <a href={SITE.linkedin} class="btn btn--light" rel="me">
+        Connect with me on LinkedIn
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+      <a href={`mailto:${SITE.email}`} class="btn btn--outline-light">
+        Email me
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--charcoal);
+    color: var(--ivory);
+  }
+
+  .contact__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-block: clamp(72px, 10vw, 136px);
+  }
+
+  .contact__eyebrow {
+    color: var(--red-light);
+  }
+
+  .contact__title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(56px, 8.5vw, 112px);
+    line-height: 0.95;
+  }
+
+  .contact__accent {
+    font-style: italic;
+    color: var(--red-light);
+  }
+
+  .contact__text {
+    max-width: 640px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--stone);
+  }
+
+  .btn--light {
+    background: var(--ivory);
+    color: var(--charcoal);
+  }
+
+  .btn--light:hover {
+    background: var(--red-light);
+    color: var(--charcoal);
+  }
+
+  .btn--outline-light {
+    border: 1px solid #6E685E;
+    color: var(--ivory);
+  }
+
+  .btn--outline-light:hover {
+    border-color: var(--red-light);
+    color: var(--red-light);
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import { SITE } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span>© {year} {SITE.name} · {SITE.jobTitle}</span>
+    <span>Built with Astro</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--charcoal);
+    color: var(--stone-dark);
+    border-top: 1px solid #3A3934;
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    padding-block: 28px;
+    font-size: 13px;
+  }
+</style>

@@ -1,0 +1,181 @@
+---
+// Logos are monochrome by default and take the brand colour on hover.
+// TODO: replace `mark` (initials) with the official SVG logos.
+const groups = [
+  {
+    label: '01 / Search & analytics',
+    title: 'Understanding search performance',
+    tools: [
+      { name: 'Search Console', mark: 'GSC', brand: '#4285F4' },
+      { name: 'GA4', mark: 'GA4', brand: '#E37400' },
+      { name: 'Looker Studio', mark: 'LS', brand: '#4285F4' },
+      { name: 'GTM', mark: 'GTM', brand: '#246FDB' },
+    ],
+  },
+  {
+    label: '02 / Technical SEO',
+    title: 'Looking under the hood',
+    tools: [
+      { name: 'Screaming Frog', mark: 'SF', brand: '#5E9E2E' },
+      { name: 'PageSpeed', mark: 'PSI', brand: '#4285F4' },
+      { name: 'Schema.org', mark: '{ }', brand: '#E2583E' },
+      { name: 'DevTools', mark: 'DT', brand: '#1A73E8' },
+    ],
+  },
+  {
+    label: '03 / SEO research & strategy',
+    title: 'Finding opportunities',
+    tools: [
+      { name: 'Semrush', mark: 'SR', brand: '#FF642D' },
+      { name: 'Ahrefs', mark: 'ah', brand: '#054ADA' },
+    ],
+  },
+];
+---
+
+<section id="toolkit" class="toolkit" aria-labelledby="tools-title">
+  <div class="wrap section toolkit__inner">
+    <div class="stack section-head">
+      <p class="eyebrow">03 / Toolkit</p>
+      <h2 id="tools-title" class="h2">The tools behind the analysis.</h2>
+      <p class="body">
+        I use them to investigate performance, identify opportunities and support data-informed
+        decisions.
+      </p>
+    </div>
+
+    <div>
+      {
+        groups.map((group) => (
+          <div class="group">
+            <div class="group__head">
+              <p class="group__label">{group.label}</p>
+              <h3 class="group__title">{group.title}</h3>
+            </div>
+            <ul class="tools">
+              {group.tools.map((tool) => (
+                <li class="tool" style={`--brand: ${tool.brand}`}>
+                  <span class="tool__icon" aria-hidden="true">
+                    {tool.mark}
+                  </span>
+                  <span class="tool__name">{tool.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .toolkit {
+    background: var(--ivory-raised);
+    border-top: 1px solid var(--stone);
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .toolkit__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-block: 40px;
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .group:first-child {
+    padding-top: 0;
+  }
+
+  .group:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .group__head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .group__label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+
+  .group__title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 28px;
+  }
+
+  .tools {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .tool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 24px 12px 18px;
+  }
+
+  .tool__icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid currentColor;
+    border-radius: 16px;
+    background: var(--ivory);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-subtle);
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .tool__name {
+    font-size: 15px;
+    text-align: center;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .tool:hover .tool__icon {
+    transform: translateY(-3px);
+    color: var(--brand);
+  }
+
+  .tool:hover .tool__name {
+    color: var(--text);
+  }
+
+  @media (max-width: 720px) {
+    .tools {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tool:hover .tool__icon {
+      transform: none;
+    }
+  }
+</style>

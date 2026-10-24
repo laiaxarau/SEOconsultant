@@ -1,0 +1,179 @@
+---
+import { SITE } from '../data/site';
+
+// TODO: replace the placeholders with real images (src/assets + <Image />).
+const projects = [
+  {
+    meta: 'Independent project · SEO for women',
+    title: 'SEO amb Talons',
+    text: 'An independent initiative focused on helping women improve their online visibility through a technical, strategic and feminist approach to SEO. SEO amb Talons brings my professional knowledge into a project with its own identity, audience and purpose.',
+    link: { href: SITE.links.seoAmbTalons, label: 'Visit SEO amb Talons' },
+    placeholder: 'SEO amb Talons — brand image',
+    tint: '#EBD9D5',
+  },
+  {
+    meta: 'Personal project · Astro · HTML · CSS · JavaScript',
+    title: 'Madrid: a city guide turned into a game',
+    text: 'A playful, interactive travel guide created as a surprise for a four-day trip to Madrid. Built with web technologies and AI-assisted development, the project turns trip planning into a more personal experience. It brings together creativity, user experience and my interest in building useful digital products.',
+    link: { href: SITE.links.madrid, label: 'Explore Madrid' },
+    placeholder: 'Madrid game — screenshot',
+    tint: '#E6E0D5',
+  },
+];
+---
+
+<section id="work" aria-labelledby="work-title">
+  <div class="wrap section work">
+    <div class="stack section-head">
+      <p class="eyebrow">05 / Selected work</p>
+      <h2 id="work-title" class="h2">Selected work</h2>
+    </div>
+
+    <article class="card featured">
+      <div class="featured__text">
+        <p class="card__meta">Technical SEO · Strategy · Organic growth</p>
+        <h3 class="featured__title">SEO consulting</h3>
+        <p class="card__text">
+          My professional work brings together technical investigation, content strategy and
+          performance analysis. I focus on understanding the reasons behind search performance and
+          identifying practical opportunities to improve it.
+        </p>
+        <p class="featured__note">Professional experience at Dobleseo.</p>
+      </div>
+      <div class="placeholder featured__visual">[Visual: anonymised chart or audit excerpt]</div>
+    </article>
+
+    <div class="projects">
+      {
+        projects.map((project) => (
+          <article class="card project">
+            <div class="placeholder project__visual" style={`background: ${project.tint}`}>
+              [{project.placeholder}]
+            </div>
+            <div class="project__body">
+              <p class="card__meta">{project.meta}</p>
+              <h3 class="h3">{project.title}</h3>
+              <p class="card__text project__text">{project.text}</p>
+              <a href={project.link.href} class="card__link">
+                {project.link.label}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .work {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .card {
+    border: 1px solid var(--stone);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--ivory-raised);
+    transition: border-color 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--charcoal);
+  }
+
+  .card__meta {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .card__text {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-body);
+  }
+
+  .card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .featured {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .featured__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+    padding: clamp(28px, 4vw, 48px);
+  }
+
+  .featured__title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(30px, 3.2vw, 40px);
+    line-height: 1.1;
+  }
+
+  .featured .card__text {
+    font-size: 17px;
+  }
+
+  .featured__note {
+    font-size: 15px;
+    color: var(--text-subtle);
+  }
+
+  .featured__visual {
+    min-height: 280px;
+    background: var(--charcoal);
+    color: var(--stone-dark);
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project__visual {
+    height: 220px;
+  }
+
+  .project__body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex-grow: 1;
+    padding: 28px;
+  }
+
+  .project__text {
+    flex-grow: 1;
+  }
+
+  @media (max-width: 720px) {
+    .featured {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
