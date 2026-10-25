@@ -4,6 +4,17 @@ import { SITE } from '../data/site';
 import seoAmbTalonsImg from '../assets/projects/seo-amb-talons.png';
 import madridImg from '../assets/projects/madrid.png';
 
+// Audit phases for the terminal visual: the process only, no metrics.
+const auditSteps = [
+  { name: 'crawling', note: 'how bots discover the site' },
+  { name: 'indexing', note: 'what search engines keep' },
+  { name: 'architecture', note: 'how pages connect' },
+  { name: 'structured data', note: 'what machines understand' },
+  { name: 'search intent', note: 'what people look for' },
+  { name: 'content', note: 'what the site offers' },
+  { name: 'measurement', note: 'GSC · GA4 · Data Studio' },
+];
+
 const projects = [
   {
     meta: 'Independent project · SEO for women',
@@ -42,7 +53,31 @@ const projects = [
         </p>
         <p class="featured__note">Professional experience at Dobleseo.</p>
       </div>
-      <div class="placeholder featured__visual">[Visual: anonymised chart or audit excerpt]</div>
+      <figure class="featured__visual terminal" aria-label="An SEO audit shown as a terminal log: crawling, indexing, architecture, structured data, search intent, content and measurement">
+        <div class="terminal__bar" aria-hidden="true">
+          <span class="terminal__dot"></span>
+          <span class="terminal__dot"></span>
+          <span class="terminal__dot"></span>
+          <span class="terminal__name">seo-audit</span>
+        </div>
+        <div class="terminal__body" aria-hidden="true">
+          <p class="terminal__cmd"><span class="terminal__prompt">$</span> seo-audit --site client.com</p>
+          <ul class="terminal__log">
+            {
+              auditSteps.map((step) => (
+                <li>
+                  <span class="terminal__check">✓</span>
+                  <span class="terminal__step">{step.name}</span>
+                  <span class="terminal__note">{step.note}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="terminal__result">
+            <span class="terminal__arrow">→</span> opportunities identified · ready to implement<span class="terminal__cursor"></span>
+          </p>
+        </div>
+      </figure>
     </article>
 
     <div class="projects">
@@ -147,8 +182,119 @@ const projects = [
 
   .featured__visual {
     min-height: 280px;
+    margin: 0;
     background: var(--ink);
-    color: var(--line-strong);
+    color: var(--text-on-dark);
+  }
+
+  .terminal {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .terminal__bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--line-dark);
+  }
+
+  .terminal__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--line-dark);
+  }
+
+  .terminal__name {
+    margin-left: 8px;
+    font-size: 12px;
+    color: #8A8D93;
+  }
+
+  .terminal__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    flex-grow: 1;
+    padding: clamp(20px, 3vw, 32px);
+  }
+
+  .terminal__cmd {
+    color: var(--bg);
+  }
+
+  .terminal__prompt,
+  .terminal__arrow {
+    color: var(--detail-light);
+  }
+
+  .terminal__log {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .terminal__log li {
+    display: grid;
+    grid-template-columns: 18px 128px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .terminal__check {
+    color: var(--accent-light);
+  }
+
+  .terminal__step {
+    color: var(--bg);
+  }
+
+  .terminal__note {
+    color: #8A8D93;
+  }
+
+  .terminal__result {
+    color: var(--bg);
+  }
+
+  .terminal__cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    margin-left: 4px;
+    vertical-align: -2px;
+    background: var(--accent-light);
+    animation: blink 1.1s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .terminal__cursor {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .terminal__log li {
+      grid-template-columns: 18px minmax(0, 1fr);
+    }
+
+    .terminal__note {
+      grid-column: 2;
+    }
   }
 
   .projects {

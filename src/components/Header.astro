@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 const links = [
   { href: '#about', label: 'About' },
   { href: '#toolkit', label: 'Toolkit' },
@@ -9,10 +11,10 @@ const links = [
 
 <header class="header">
   <div class="wrap header__inner">
-    <a href="#top" class="brand">
-      <span class="brand__name">LAIA XARAU</span>
+    <div class="brand">
+      <Logo />
       <span class="brand__tag">SEO · TECHNOLOGY · STRATEGY</span>
-    </a>
+    </div>
     <nav aria-label="Main" class="nav">
       {links.map((link) => <a href={link.href}>{link.label}</a>)}
     </nav>
@@ -35,15 +37,8 @@ const links = [
 
   .brand {
     display: flex;
-    align-items: baseline;
-    gap: 12px;
-    text-decoration: none;
-  }
-
-  .brand__name {
-    font-weight: 600;
-    font-size: 16px;
-    letter-spacing: 0.1em;
+    align-items: center;
+    gap: 16px;
   }
 
   .brand__tag {
