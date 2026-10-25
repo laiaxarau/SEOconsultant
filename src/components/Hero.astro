@@ -77,14 +77,14 @@ const domain = SITE.url.replace(/^https?:\/\//, '');
     display: flex;
     flex-direction: column;
     gap: 16px;
-    font-weight: var(--serif-weight);
+    font-weight: var(--display-weight);
   }
 
   .hero__name {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-size: clamp(56px, 8.5vw, 112px);
     line-height: 0.95;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.035em;
   }
 
   .hero__role {
@@ -95,7 +95,7 @@ const domain = SITE.url.replace(/^https?:\/\//, '');
   }
 
   .hero__claim {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-size: clamp(28px, 3.2vw, 40px);
     line-height: 1.15;
     max-width: 580px;
@@ -109,8 +109,8 @@ const domain = SITE.url.replace(/^https?:\/\//, '');
   }
 
   .preview {
-    background: var(--ivory-raised);
-    border: 1px solid var(--stone);
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: var(--radius);
     overflow: hidden;
   }
@@ -119,7 +119,7 @@ const domain = SITE.url.replace(/^https?:\/\//, '');
     display: flex;
     justify-content: space-between;
     padding: 14px 20px;
-    border-bottom: 1px solid #E6E0D5;
+    border-bottom: 1px solid var(--line);
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.02em;
@@ -143,9 +143,9 @@ const domain = SITE.url.replace(/^https?:\/\//, '');
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: var(--red);
-    color: var(--ivory);
-    font-family: var(--font-serif);
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-display);
     font-size: 13px;
     display: inline-flex;
     align-items: center;
@@ -179,8 +179,8 @@ const domain = SITE.url.replace(/^https?:\/\//, '');
   .preview__code {
     margin: 0;
     padding: 20px 24px;
-    background: var(--charcoal);
-    color: var(--stone);
+    background: var(--ink);
+    color: var(--line);
     font-family: var(--font-mono);
     font-size: 12.5px;
     line-height: 1.7;
@@ -189,11 +189,11 @@ const domain = SITE.url.replace(/^https?:\/\//, '');
   }
 
   .preview__code .c {
-    color: #948D80;
+    color: #8A8D93;
   }
 
   .preview__code .k {
-    color: var(--red-light);
+    color: var(--accent-light);
   }
 
   @media (max-width: 860px) {

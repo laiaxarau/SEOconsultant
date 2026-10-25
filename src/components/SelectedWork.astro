@@ -80,15 +80,15 @@ const projects = [
   }
 
   .card {
-    border: 1px solid var(--stone);
+    border: 1px solid var(--line);
     border-radius: var(--radius);
     overflow: hidden;
-    background: var(--ivory-raised);
+    background: var(--surface);
     transition: border-color 0.2s;
   }
 
   .card:hover {
-    border-color: var(--charcoal);
+    border-color: var(--ink);
   }
 
   .card__meta {
@@ -97,7 +97,7 @@ const projects = [
     font-weight: 500;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--accent);
   }
 
   .card__text {
@@ -130,8 +130,8 @@ const projects = [
   }
 
   .featured__title {
-    font-family: var(--font-serif);
-    font-weight: var(--serif-weight);
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
     font-size: clamp(30px, 3.2vw, 40px);
     line-height: 1.1;
   }
@@ -147,8 +147,8 @@ const projects = [
 
   .featured__visual {
     min-height: 280px;
-    background: var(--charcoal);
-    color: var(--stone-dark);
+    background: var(--ink);
+    color: var(--line-strong);
   }
 
   .projects {
@@ -167,7 +167,7 @@ const projects = [
     height: auto;
     aspect-ratio: 1261 / 860;
     object-fit: cover;
-    border-bottom: 1px solid var(--stone);
+    border-bottom: 1px solid var(--line);
   }
 
   .project__body {
