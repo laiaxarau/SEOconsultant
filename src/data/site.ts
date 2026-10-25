@@ -9,7 +9,7 @@ export const SITE = {
   title: 'Laia Xarau | SEO Consultant & Technical SEO',
   description:
     'SEO consultant with a technical background, a strategic mindset and a curiosity for how the web works.',
-  linkedin: 'https://www.linkedin.com/in/TODO', // TODO: LinkedIn profile URL
+  linkedin: 'https://www.linkedin.com/in/laiaxarau/',
   email: 'TODO@example.com', // TODO: contact email
   links: {
     seoAmbTalons: 'https://seoambtalons.cat',
