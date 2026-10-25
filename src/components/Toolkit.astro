@@ -15,7 +15,7 @@ import seRanking from '../assets/tools/se-ranking.png';
 // Tools without a logo yet fall back to `mark` (initials) in the brand colour.
 const groups = [
   {
-    label: '01 / Search & analytics',
+    num: '01', label: 'Search & analytics',
     title: 'Understanding search performance',
     tools: [
       { name: 'Search Console', logo: searchConsole },
@@ -24,7 +24,7 @@ const groups = [
     ],
   },
   {
-    label: '02 / Technical SEO',
+    num: '02', label: 'Technical SEO',
     title: 'Looking under the hood',
     tools: [
       { name: 'Screaming Frog', logo: screamingFrog },
@@ -34,7 +34,7 @@ const groups = [
     ],
   },
   {
-    label: '03 / SEO research & strategy',
+    num: '03', label: 'SEO research & strategy',
     title: 'Finding opportunities',
     tools: [
       { name: 'Semrush', logo: semrush },
@@ -48,8 +48,8 @@ const groups = [
 <section id="toolkit" class="toolkit" aria-labelledby="tools-title">
   <div class="wrap section toolkit__inner">
     <div class="stack section-head">
-      <p class="eyebrow">03 / Toolkit</p>
-      <h2 id="tools-title" class="h2">The tools behind the analysis.</h2>
+      <p class="eyebrow"><span aria-hidden="true">03 / </span>Toolkit</p>
+      <h2 id="tools-title" class="h2">The technical SEO tools behind the analysis.</h2>
       <p class="body">
         I use them to investigate performance, identify opportunities and support data-informed
         decisions.
@@ -61,7 +61,10 @@ const groups = [
         groups.map((group) => (
           <div class="group">
             <div class="group__head">
-              <p class="group__label">{group.label}</p>
+              <p class="group__label">
+                <span aria-hidden="true">{group.num} / </span>
+                {group.label}
+              </p>
               <h3 class="group__title">{group.title}</h3>
             </div>
             <ul class="tools">
