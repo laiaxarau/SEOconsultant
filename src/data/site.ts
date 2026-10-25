@@ -12,7 +12,8 @@ export const SITE = {
   linkedin: 'https://www.linkedin.com/in/TODO', // TODO: LinkedIn profile URL
   email: 'TODO@example.com', // TODO: contact email
   links: {
-    seoAmbTalons: '#', // TODO: SEO amb Talons URL
-    madrid: '#', // TODO: Madrid project URL
+    seoAmbTalons: 'https://seoambtalons.cat',
+    madrid: 'https://madrid.laiaxarau.com',
+    frontendPortfolio: 'https://frontend.laiaxarau.com',
   },
 };

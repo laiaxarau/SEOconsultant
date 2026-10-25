@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { SITE } from '../data/site';
 import seoAmbTalonsImg from '../assets/projects/seo-amb-talons.png';
 import madridImg from '../assets/projects/madrid.png';
+import frontendPortfolioImg from '../assets/projects/frontend-portfolio.jpg';
 
 // Audit phases for the terminal visual: the process only, no metrics.
 const auditSteps = [
@@ -31,6 +32,14 @@ const projects = [
     link: { href: SITE.links.madrid, label: 'Explore Madrid' },
     image: madridImg,
     alt: 'Madrid travel game cover: "Tria la teva aventura", 5–8 November, with the Madrid skyline',
+  },
+  {
+    meta: 'Personal project · Astro · Tailwind CSS · JavaScript',
+    title: 'Front-end portfolio',
+    text: 'My first portfolio as a front-end developer. It gathers the projects that started my path into code, from a WordPress site for a non-profit organization to an Astro site powered by the SpaceX API. The content is loaded from a JSON file, so the site is easy to update.',
+    link: { href: SITE.links.frontendPortfolio, label: 'Visit the portfolio' },
+    image: frontendPortfolioImg,
+    alt: 'Front-end portfolio homepage with the LAIA XARAU logo and project previews for a WordPress site and a SpaceX API site',
   },
 ];
 ---
@@ -87,8 +96,8 @@ const projects = [
             <Image
               src={project.image}
               alt={project.alt}
-              widths={[400, 640, 960, 1261]}
-              sizes="(max-width: 720px) 100vw, 580px"
+              widths={[400, 640, 800]}
+              sizes="(max-width: 720px) 100vw, 400px"
               class="project__visual"
             />
             <div class="project__body">
