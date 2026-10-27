@@ -1,0 +1,190 @@
+---
+import { SITE } from '../data/site';
+
+const projects = [
+  {
+    num: '01',
+    meta: 'Astro · HTML · CSS · JavaScript',
+    title: 'Madrid: a city guide turned into a game',
+    text: 'An interactive travel guide built as a surprise for a four-day trip to Madrid. It turns trip planning into a game — choosing routes, discovering spots and collecting moments. Built with web technologies and AI-assisted development.',
+    link: { href: SITE.links.madrid, label: 'Play the guide', live: true },
+    tag: 'Live',
+  },
+  {
+    num: '02',
+    meta: 'Astro · Tailwind CSS · JavaScript',
+    title: 'Front-end portfolio',
+    text: 'My first portfolio as a front-end developer — the projects that started my path into code. Content loaded from a JSON file, easy to update. A snapshot of where it all began.',
+    link: { href: SITE.links.frontendPortfolio, label: 'Visit the portfolio', live: true },
+    tag: 'Live',
+  },
+  {
+    num: '03',
+    meta: 'Astro · SpaceX API · JavaScript',
+    title: 'SpaceX launches tracker',
+    text: 'An Astro site powered by the public SpaceX API — my first project connecting a live external data source. Lists launches, missions and rocket specs, updated in real time.',
+    link: { href: SITE.links.spacex, label: 'Coming soon at spacex.laiaxarau.com', live: false },
+    tag: 'Soon',
+  },
+];
+---
+
+<section id="playground" class="playground" aria-labelledby="playground-title">
+  <div class="wrap section playground__inner">
+    <div class="split">
+      <div class="stack">
+        <p class="eyebrow"><span aria-hidden="true">08 / </span>Side projects</p>
+        <h2 id="playground-title" class="h2">Things I've built</h2>
+      </div>
+      <p class="body playground__intro">
+        Outside of SEO work, I build things — mostly to learn, sometimes as a gift, occasionally
+        just because an idea won't leave me alone. These are three of them.
+      </p>
+    </div>
+
+    <ul class="playground__list">
+      {
+        projects.map((p) => (
+          <li class="pcard">
+            <div class="pcard__head">
+              <span class="pcard__num" aria-hidden="true">{p.num}</span>
+              <span class:list={['pcard__tag', { 'pcard__tag--soon': p.tag === 'Soon' }]}>
+                {p.tag}
+              </span>
+            </div>
+            <p class="pcard__meta">{p.meta}</p>
+            <h3 class="pcard__title">{p.title}</h3>
+            <p class="pcard__text">{p.text}</p>
+            {p.link.live ? (
+              <a href={p.link.href} class="pcard__link" target="_blank" rel="noopener noreferrer">
+                {p.link.label}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            ) : (
+              <span class="pcard__link pcard__link--muted">{p.link.label}</span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .playground {
+    background: var(--secondary);
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .playground__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .playground__intro {
+    align-self: end;
+  }
+
+  .playground__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2px;
+  }
+
+  @media (max-width: 720px) {
+    .playground__list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .pcard {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: clamp(24px, 3vw, 36px);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: border-color 0.2s;
+  }
+
+  .pcard:hover {
+    border-color: var(--detail);
+  }
+
+  .pcard__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pcard__num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-subtle);
+  }
+
+  .pcard__tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 100px;
+    background: var(--detail);
+    color: #fff;
+  }
+
+  .pcard__tag--soon {
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--text-subtle);
+  }
+
+  .pcard__meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--text-subtle);
+  }
+
+  .pcard__title {
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    font-size: clamp(20px, 2vw, 24px);
+    line-height: 1.2;
+  }
+
+  .pcard__text {
+    flex-grow: 1;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-body);
+  }
+
+  .pcard__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--detail-strong);
+    min-height: 44px;
+  }
+
+  .pcard__link:hover {
+    color: var(--detail);
+  }
+
+  .pcard__link--muted {
+    color: var(--text-subtle);
+    font-weight: 500;
+    cursor: default;
+  }
+</style>

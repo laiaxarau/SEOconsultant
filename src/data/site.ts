@@ -15,5 +15,6 @@ export const SITE = {
     seoAmbTalons: 'https://seoambtalons.cat',
     madrid: 'https://madrid.laiaxarau.com',
     frontendPortfolio: 'https://frontend.laiaxarau.com',
+    spacex: 'https://spacex.laiaxarau.com', // TODO: domain not live yet
   },
 };
